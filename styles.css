@@ -361,6 +361,9 @@ em {
   font-size: clamp(2.6rem, 6.5vw, 4.8rem);
   font-weight: 800;
   margin-bottom: 1rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
 }
 
 .lead {
@@ -1100,7 +1103,9 @@ textarea.is-invalid:focus {
   }
 
   .hero h1 {
-    font-size: clamp(2.2rem, 10vw, 3rem);
+    font-size: clamp(1.5rem, 7.2vw, 2.15rem);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
   }
 
   .section {
