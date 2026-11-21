@@ -1,32 +1,27 @@
-import { handleContactRequest } from "../lib/contact.mjs";
-
-function corsHeaders(origin) {
-  const allowed = (process.env.CONTACT_ALLOWED_ORIGINS || "")
-    .split(",")
-    .map((item) => item.trim())
-    .filter(Boolean);
-
-  const headers = {
-    Vary: "Origin",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-  };
-
-  if (!origin) return headers;
-  if (!allowed.length || allowed.includes(origin) || allowed.includes("*")) {
-    headers["Access-Control-Allow-Origin"] = origin;
-  }
-  return headers;
-}
+import { corsHeaders, handleContactRequest } from "../lib/contact.mjs";
+import { readLimitedBody } from "../lib/read-body.mjs";
 
 export default async function handler(req, res) {
   const origin = req.headers.origin || "";
   const extra = corsHeaders(origin);
   Object.entries(extra).forEach(([key, value]) => res.setHeader(key, value));
 
-  const chunks = [];
-  for await (const chunk of req) chunks.push(chunk);
-  const raw = Buffer.concat(chunks).toString("utf8");
+  let raw = "";
+  try {
+    raw = await readLimitedBody(req);
+  } catch (error) {
+    if (error?.code === "PAYLOAD_TOO_LARGE") {
+      res.statusCode = 413;
+      res.setHeader("Content-Type", "application/json; charset=utf-8");
+      res.end(JSON.stringify({ error: "A kérés túl nagy." }));
+      req.destroy();
+      return;
+    }
+    res.statusCode = 400;
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
+    res.end(JSON.stringify({ error: "Érvénytelen kérés." }));
+    return;
+  }
 
   const result = await handleContactRequest({
     method: req.method,
