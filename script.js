@@ -7,23 +7,24 @@
   const form = document.querySelector("[data-form]");
   const statusEl = document.querySelector("[data-form-status]");
   const yearEl = document.querySelector("[data-year]");
+  const startedEl = document.querySelector("[data-form-started]");
+  const submitBtn = document.querySelector("[data-submit]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const contactUrl = window.VOLTPRO?.contactUrl || "/api/contact";
 
-  if (yearEl) {
-    yearEl.textContent = String(new Date().getFullYear());
-  }
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  if (startedEl) startedEl.value = String(Date.now());
 
-  /* —— Sticky header state —— */
   const onScroll = () => {
     header?.classList.toggle("is-scrolled", window.scrollY > 12);
   };
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* —— Mobile navigation —— */
   const setNavOpen = (open) => {
     toggle?.setAttribute("aria-expanded", String(open));
     nav?.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
     if (toggle) {
       const label = toggle.querySelector(".sr-only");
       if (label) label.textContent = open ? "Menü bezárása" : "Menü megnyitása";
@@ -31,8 +32,7 @@
   };
 
   toggle?.addEventListener("click", () => {
-    const open = toggle.getAttribute("aria-expanded") === "true";
-    setNavOpen(!open);
+    setNavOpen(toggle.getAttribute("aria-expanded") !== "true");
   });
 
   nav?.querySelectorAll("a").forEach((link) => {
@@ -43,7 +43,6 @@
     if (event.key === "Escape") setNavOpen(false);
   });
 
-  /* —— Scroll reveal —— */
   const reveals = document.querySelectorAll(".reveal");
   if (reduceMotion) {
     reveals.forEach((el) => el.classList.add("is-visible"));
@@ -64,59 +63,20 @@
     reveals.forEach((el) => el.classList.add("is-visible"));
   }
 
-  /* —— Stat counters —— */
-  const counters = document.querySelectorAll("[data-count]");
-  const animateCount = (el) => {
-    if (reduceMotion) {
-      el.textContent = el.dataset.count;
-      return;
-    }
-    const target = Number(el.dataset.count);
-    const duration = 1100;
-    const start = performance.now();
-    const tick = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = String(Math.round(target * eased));
-      if (progress < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  };
-
-  if (counters.length && "IntersectionObserver" in window) {
-    const countIo = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateCount(entry.target);
-            countIo.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-    counters.forEach((el) => countIo.observe(el));
-  } else {
-    counters.forEach((el) => {
-      el.textContent = el.dataset.count;
-    });
-  }
-
-  /* —— Form validation (frontend demo only) —— */
   if (!form || !statusEl) return;
 
   const fields = {
     nev: form.querySelector("#nev"),
     email: form.querySelector("#email"),
     telefon: form.querySelector("#telefon"),
-    szolgaltatas: form.querySelector("#szolgaltatas"),
+    targy: form.querySelector("#targy"),
     uzenet: form.querySelector("#uzenet"),
     gdpr: form.querySelector("#gdpr"),
   };
 
   const messages = {
     nev: {
-      valueMissing: "Adja meg a nevét.",
+      valueMissing: "Adja meg a teljes nevét.",
       tooShort: "A név legalább 2 karakter legyen.",
     },
     email: {
@@ -125,22 +85,21 @@
       patternMismatch: "Érvényes e-mail címet adjon meg.",
     },
     telefon: {
-      valueMissing: "Adja meg a telefonszámát.",
-      patternMismatch: "Adjon meg érvényes telefonszámot (pl. +36 52 123 4567).",
+      patternMismatch: "Adjon meg érvényes telefonszámot (pl. +36 70 567 0878).",
     },
-    szolgaltatas: {
-      valueMissing: "Válasszon érdeklődési kört.",
+    targy: {
+      valueMissing: "Válasszon tárgyat.",
     },
     uzenet: {
       valueMissing: "Írjon rövid üzenetet a munkáról.",
       tooShort: "Az üzenet legyen legalább 15 karakter.",
     },
     gdpr: {
-      valueMissing: "A folytatáshoz jelölje be a megértést igazoló mezőt.",
+      valueMissing: "A küldéshez jelölje be a hozzájárulást.",
     },
   };
 
-  const phonePattern = /^[+]?[\d\s()-]{8,20}$/;
+  const phonePattern = /^[+]?[\d\s()/.-]{8,20}$/;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
   const setFieldError = (name, message) => {
@@ -174,26 +133,27 @@
     const field = fields[name];
     if (!field) return true;
 
-    let valid = field.checkValidity();
+    if (name === "telefon") {
+      const value = field.value.trim();
+      if (!value) {
+        setFieldError(name, "");
+        return true;
+      }
+      const digits = value.replace(/\D/g, "");
+      const valid = phonePattern.test(value) && digits.length >= 8 && digits.length <= 15;
+      setFieldError(name, valid ? "" : messages.telefon.patternMismatch);
+      return valid;
+    }
 
     if (name === "email" && field.value.trim()) {
-      valid = emailPattern.test(field.value.trim());
+      const valid = emailPattern.test(field.value.trim());
       if (!valid) {
         setFieldError(name, messages.email.patternMismatch);
         return false;
       }
     }
 
-    if (name === "telefon" && field.value.trim()) {
-      const digits = field.value.replace(/\D/g, "");
-      valid = phonePattern.test(field.value.trim()) && digits.length >= 8;
-      if (!valid) {
-        setFieldError(name, messages.telefon.patternMismatch);
-        return false;
-      }
-    }
-
-    if (!valid) {
+    if (!field.checkValidity()) {
       setFieldError(name, getErrorMessage(name, field));
       return false;
     }
@@ -212,30 +172,84 @@
     });
   });
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  const setStatus = (type, text) => {
     statusEl.classList.remove("is-error", "is-success");
-    statusEl.textContent = "";
+    if (type) statusEl.classList.add(type);
+    statusEl.textContent = text;
+  };
 
-    const order = ["nev", "email", "telefon", "szolgaltatas", "uzenet", "gdpr"];
+  let submitting = false;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (submitting) return;
+
+    setStatus("", "");
+
+    const order = ["nev", "email", "telefon", "targy", "uzenet", "gdpr"];
     let firstInvalid = null;
-
     order.forEach((name) => {
-      const ok = validateField(name);
-      if (!ok && !firstInvalid) firstInvalid = fields[name];
+      if (!validateField(name) && !firstInvalid) firstInvalid = fields[name];
     });
 
     if (firstInvalid) {
-      statusEl.textContent = "Kérjük, javítsa a pirossal jelölt mezőket.";
-      statusEl.classList.add("is-error");
+      setStatus("is-error", "Kérjük, javítsa a pirossal jelölt mezőket.");
       firstInvalid.focus();
       return;
     }
 
-    statusEl.textContent =
-      "Validáció sikeres. Ez egy frontend bemutató — az üzenet nem került elküldésre.";
-    statusEl.classList.add("is-success");
-    form.reset();
-    order.forEach((name) => setFieldError(name, ""));
+    submitting = true;
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Küldés…";
+    }
+
+    const payload = {
+      name: fields.nev.value.trim(),
+      email: fields.email.value.trim(),
+      phone: fields.telefon.value.trim(),
+      subject: fields.targy.value.trim(),
+      message: fields.uzenet.value.trim(),
+      website: form.querySelector("#website")?.value || "",
+      formStarted: startedEl?.value || "",
+    };
+
+    try {
+      const response = await fetch(contactUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      let data = {};
+      try {
+        data = await response.json();
+      } catch {
+        data = {};
+      }
+
+      if (!response.ok) {
+        throw new Error(data.error || "A küldés nem sikerült. Próbálja meg később, vagy hívjon minket.");
+      }
+
+      setStatus("is-success", data.message || "Köszönjük. Az üzenet elment, hamarosan jelentkezünk.");
+      form.reset();
+      if (startedEl) startedEl.value = String(Date.now());
+      order.forEach((name) => setFieldError(name, ""));
+    } catch (error) {
+      const offline = !navigator.onLine;
+      setStatus(
+        "is-error",
+        offline
+          ? "Nincs hálózati kapcsolat. Ellenőrizze az internetet, vagy hívjon minket."
+          : error.message || "A küldés nem sikerült. Hívjon minket a +36 70 567 0878 számon."
+      );
+    } finally {
+      submitting = false;
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Üzenet küldése";
+      }
+    }
   });
 })();

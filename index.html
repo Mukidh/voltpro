@@ -6,24 +6,19 @@
     <title>VoltPro | Villanyszerelés Debrecenben</title>
     <meta
       name="description"
-      content="VoltPro — prémium villanyszerelés magánszemélyeknek és vállalkozásoknak Debrecenben. Új hálózatok, felújítás, okosotthon és ipari megoldások."
+      content="VoltPro — villanyszerelés magánszemélyeknek és vállalkozásoknak Debrecenben. Új hálózatok, felújítás, okosotthon, EV töltő és hibaelhárítás. Hívjon: +36 70 567 0878."
     />
-    <meta
-      name="keywords"
-      content="villanyszerelés Debrecen, elektromos szerelés, okosotthon, ipari villamos, VoltPro"
-    />
-    <meta name="author" content="VoltPro (mintaoldal)" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://voltpro.example/" />
+    <link rel="canonical" href="https://mukidh.github.io/voltpro/" />
 
     <meta property="og:locale" content="hu_HU" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="VoltPro | Villanyszerelés Debrecenben" />
     <meta
       property="og:description"
-      content="Megbízható villanyszerelés otthonokra és cégeknek Debrecenben. Kérjen ajánlatot — ez egy bemutató weboldal."
+      content="Villanyszerelés otthonokra és cégeknek Debrecenben. Kérjen ajánlatot telefonon vagy az űrlapon."
     />
-    <meta property="og:url" content="https://voltpro.example/" />
+    <meta property="og:url" content="https://mukidh.github.io/voltpro/" />
     <meta property="og:site_name" content="VoltPro" />
     <meta
       property="og:image"
@@ -34,7 +29,7 @@
     <meta name="twitter:title" content="VoltPro | Villanyszerelés Debrecenben" />
     <meta
       name="twitter:description"
-      content="Prémium villanyszerelés magán- és üzleti ügyfeleknek Debrecenben."
+      content="Villanyszerelés magán- és üzleti ügyfeleknek Debrecenben."
     />
 
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -51,40 +46,44 @@
       {
         "@context": "https://schema.org",
         "@type": "Electrician",
-        "name": "VoltPro (minta)",
-        "url": "https://voltpro.example/",
-        "logo": "https://voltpro.example/favicon.svg",
-        "description": "Fiktív villanyszerelő vállalkozás Debrecenben — bemutató weboldal.",
-        "telephone": "+36 52 000 0000",
-        "email": "info@voltpro.example",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Piac utca 12.",
-          "addressLocality": "Debrecen",
-          "postalCode": "4025",
-          "addressCountry": "HU"
+        "name": "VoltPro",
+        "url": "https://mukidh.github.io/voltpro/",
+        "logo": "https://mukidh.github.io/voltpro/favicon.svg",
+        "description": "Villanyszerelés magánszemélyeknek és vállalkozásoknak Debrecenben.",
+        "telephone": ["+36 70 567 0878", "+36 30 579 9361"],
+        "email": ["nyitdom@gmail.com", "kissnbussiness@gmail.com"],
+        "areaServed": {
+          "@type": "City",
+          "name": "Debrecen"
         },
-        "areaServed": "Debrecen",
-        "openingHours": "Mo-Fr 07:30-16:30"
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+36-70-567-0878",
+            "contactType": "customer service",
+            "areaServed": "HU",
+            "availableLanguage": "Hungarian"
+          },
+          {
+            "@type": "ContactPoint",
+            "telephone": "+36-30-579-9361",
+            "contactType": "customer service",
+            "areaServed": "HU",
+            "availableLanguage": "Hungarian"
+          }
+        ]
       }
     </script>
   </head>
   <body>
     <a class="skip-link" href="#fooldal">Ugrás a tartalomhoz</a>
 
-    <div class="demo-banner" role="status">
-      Bemutató weboldal — a VoltPro fiktív cég. Az űrlap nem küld valódi üzenetet.
-    </div>
-
     <header class="site-header" data-header>
       <div class="container header-inner">
         <a class="logo" href="#fooldal" aria-label="VoltPro kezdőlap">
           <span class="logo-mark" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M13 2 4 14h7l-1 8 10-14h-7l0-6Z"
-                fill="currentColor"
-              />
+              <path d="M13 2 4 14h7l-1 8 10-14h-7l0-6Z" fill="currentColor" />
             </svg>
           </span>
           <span class="logo-text">
@@ -109,15 +108,15 @@
         <nav id="fo-navigacio" class="site-nav" data-nav aria-label="Főmenü">
           <a href="#szolgaltatasok">Szolgáltatások</a>
           <a href="#miert-mi">Miért mi</a>
-          <a href="#projektek">Projektek</a>
-          <a href="#velemenyek">Vélemények</a>
+          <a href="#munkak">Munkák</a>
+          <a href="#kapcsolat">Kapcsolat</a>
+          <a class="header-phone" href="tel:+36705670878">+36 70 567 0878</a>
           <a href="#kapcsolat" class="nav-cta">Ajánlatkérés</a>
         </nav>
       </div>
     </header>
 
     <main id="fooldal">
-      <!-- 1. Hero -->
       <section class="hero" aria-labelledby="hero-cim">
         <div class="hero-media" aria-hidden="true">
           <img
@@ -141,22 +140,21 @@
             minőségben.
           </p>
           <div class="hero-actions reveal delay-3">
-            <a class="btn btn-primary" href="#kapcsolat">Ingyenes felmérés</a>
-            <a class="btn btn-ghost" href="#szolgaltatasok">Szolgáltatások</a>
+            <a class="btn btn-primary" href="tel:+36705670878">Hívás: +36 70 567 0878</a>
+            <a class="btn btn-ghost" href="tel:+36305799361">+36 30 579 9361</a>
+            <a class="btn btn-ghost" href="#kapcsolat">Ajánlatkérés</a>
           </div>
         </div>
       </section>
 
-      <!-- Trust strip -->
       <aside class="trust-bar" aria-label="Rövid előnyök">
         <div class="container trust-grid">
           <p><strong>Helyszíni felmérés</strong> Debrecenben és környékén</p>
           <p><strong>Írásos árajánlat</strong> rejtett költségek nélkül</p>
-          <p><strong>Garantált munka</strong> a vállalt szerelésekre</p>
+          <p><strong>Két elérhetőség</strong> telefonon, hétköznap és hétvégén is</p>
         </div>
       </aside>
 
-      <!-- 2. Services -->
       <section id="szolgaltatasok" class="section services" aria-labelledby="szolgaltatasok-cim">
         <div class="container">
           <header class="section-head reveal">
@@ -256,7 +254,6 @@
         </div>
       </section>
 
-      <!-- 3. About / Why us -->
       <section id="miert-mi" class="section about" aria-labelledby="miert-mi-cim">
         <div class="container about-grid">
           <div class="about-media reveal">
@@ -272,10 +269,9 @@
             <p class="eyebrow">Miért a VoltPro</p>
             <h2 id="miert-mi-cim">Pontosság, amit látni is lehet</h2>
             <p>
-              A VoltPro egy <strong>fiktív minta-vállalkozás</strong> Debrecenben.
-              A bemutató oldal azt mutatja be, hogyan kommunikálna egy prémium
-              villanyszerelő cég: tiszta folyamatokkal, érthető ajánlattal és
-              dokumentált munkával.
+              A VoltPro villanyszerelést végez Debrecenben magánszemélyeknek és
+              vállalkozásoknak. A munka a felméréssel kezdődik, írásos ajánlattal
+              folytatódik, és dokumentált kivitelezéssel zárul.
             </p>
             <ul class="checklist">
               <li>Helyszíni felmérés és részletes árajánlat</li>
@@ -283,33 +279,22 @@
               <li>Fotós dokumentáció a kész munkáról</li>
               <li>Egy kapcsolattartó a projekt teljes idejére</li>
             </ul>
-            <div class="about-stats" aria-label="Minta adatok">
-              <div>
-                <span class="stat-value" data-count="12">0</span>
-                <span class="stat-label">év tapasztalat <em>(minta)</em></span>
-              </div>
-              <div>
-                <span class="stat-value"><span data-count="340">0</span>+</span>
-                <span class="stat-label">befejezett munka <em>(minta)</em></span>
-              </div>
-              <div>
-                <span class="stat-value"><span data-count="48">0</span>ó</span>
-                <span class="stat-label">átlagos ajánlatidő <em>(minta)</em></span>
-              </div>
+            <div class="about-cta">
+              <a class="btn btn-primary" href="tel:+36705670878">+36 70 567 0878</a>
+              <a class="btn btn-ghost" href="tel:+36305799361">+36 30 579 9361</a>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- 4. Projects gallery -->
-      <section id="projektek" class="section projects" aria-labelledby="projektek-cim">
+      <section id="munkak" class="section projects" aria-labelledby="munkak-cim">
         <div class="container">
           <header class="section-head reveal">
-            <p class="eyebrow">Projektek</p>
-            <h2 id="projektek-cim">Befejezett munkák</h2>
+            <p class="eyebrow">Munkák</p>
+            <h2 id="munkak-cim">Ilyen feladatokra számíthat</h2>
             <p>
-              Illusztratív mintagaléria — a képek és leírások demonstrációs
-              célúak, nem valódi referenciák.
+              A képek illusztrációk. A VoltPro ezekben a kategóriákban vállal
+              villanyszerelést Debrecenben.
             </p>
           </header>
 
@@ -317,159 +302,143 @@
             <article class="project reveal">
               <img
                 src="https://images.unsplash.com/photo-1565814636199-ae8133055c1c?auto=format&fit=crop&w=900&q=75"
-                alt="Modern konyha LED világítással — minta"
+                alt="Modern konyha beépített világítással"
                 width="900"
                 height="700"
                 loading="lazy"
               />
               <div class="project-meta">
-                <p class="project-tag">Minta projekt</p>
-                <h3>Családi ház, Debrecen-Józsa</h3>
-                <p>Teljes hálózat + LED világítás</p>
+                <p class="project-tag">Lakossági</p>
+                <h3>Otthoni hálózat és világítás</h3>
+                <p>Új kötés, LED, elosztócsere</p>
               </div>
             </article>
 
             <article class="project reveal delay-1">
               <img
                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=75"
-                alt="Modern iroda belső tér — minta"
+                alt="Világos iroda belső tér"
                 width="900"
                 height="700"
                 loading="lazy"
               />
               <div class="project-meta">
-                <p class="project-tag">Minta projekt</p>
-                <h3>Iroda, belváros</h3>
-                <p>Elosztócsere + okos világítás</p>
+                <p class="project-tag">Üzleti</p>
+                <h3>Iroda és üzlethelyiség</h3>
+                <p>Elosztó, világítás, munkaállomások</p>
               </div>
             </article>
 
             <article class="project reveal delay-2">
               <img
                 src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=75"
-                alt="Ipari műhely villamos infrastruktúrával — minta"
+                alt="Ipari műhely villamos infrastruktúrával"
                 width="900"
                 height="700"
                 loading="lazy"
               />
               <div class="project-meta">
-                <p class="project-tag">Minta projekt</p>
-                <h3>Műhely, ipari park</h3>
-                <p>Géphálózat + biztonsági világítás</p>
+                <p class="project-tag">Ipari</p>
+                <h3>Műhely és üzem</h3>
+                <p>Géphálózat, kábelezés, biztonsági világítás</p>
               </div>
             </article>
 
             <article class="project reveal">
               <img
                 src="https://images.unsplash.com/photo-1593941707881-a8b9cdf81443?auto=format&fit=crop&w=900&q=75"
-                alt="Elektromos autó töltő — minta"
+                alt="Elektromos autó töltő a falon"
                 width="900"
                 height="700"
                 loading="lazy"
               />
               <div class="project-meta">
-                <p class="project-tag">Minta projekt</p>
-                <h3>EV töltő, magánudvar</h3>
-                <p>11 kW fali töltő telepítés</p>
+                <p class="project-tag">EV</p>
+                <h3>Otthoni és céges töltő</h3>
+                <p>Fali töltő telepítés, terheléskezelés</p>
               </div>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- 5. Testimonials -->
-      <section id="velemenyek" class="section testimonials" aria-labelledby="velemenyek-cim">
+      <section id="folyamat" class="section process" aria-labelledby="folyamat-cim">
         <div class="container">
           <header class="section-head reveal">
-            <p class="eyebrow">Vélemények</p>
-            <h2 id="velemenyek-cim">Mit mondanak az ügyfelek</h2>
-            <p>
-              Az alábbi szövegek <strong>minta tartalmak</strong> — nem valódi
-              ügyfélvélemények.
-            </p>
+            <p class="eyebrow">Folyamat</p>
+            <h2 id="folyamat-cim">Így dolgozunk</h2>
+            <p>Négy lépés a hívástól a kész hálózatig.</p>
           </header>
-
-          <div class="testimonial-grid">
-            <figure class="testimonial reveal">
-              <blockquote>
-                <p>
-                  „Pontosan azt kaptuk, amit az ajánlatban leírtak. Tiszta munka,
-                  érthető magyarázat a tábláról — ajánlom.”
-                </p>
-              </blockquote>
-              <figcaption>
-                <span class="testimonial-name">Kiss Anna</span>
-                <span class="testimonial-role">Lakástulajdonos · Debrecen <em>(minta)</em></span>
-              </figcaption>
-            </figure>
-
-            <figure class="testimonial reveal delay-1">
-              <blockquote>
-                <p>
-                  „Az irodánk világítását és elosztóját egy hétvége alatt
-                  cserélték. Nem álltunk le a munkával."
-                </p>
-              </blockquote>
-              <figcaption>
-                <span class="testimonial-name">Nagy Péter</span>
-                <span class="testimonial-role">Ügyvezető · helyi Kft. <em>(minta)</em></span>
-              </figcaption>
-            </figure>
-
-            <figure class="testimonial reveal delay-2">
-              <blockquote>
-                <p>
-                  „Az EV töltő telepítése gyors volt, a terheléskezelést is
-                  elmagyarázták. Szakmai hozzáállás."
-                </p>
-              </blockquote>
-              <figcaption>
-                <span class="testimonial-name">Szabó Réka</span>
-                <span class="testimonial-role">Családi ház · Józsa <em>(minta)</em></span>
-              </figcaption>
-            </figure>
-          </div>
+          <ol class="process-grid">
+            <li class="reveal">
+              <span class="process-step">01</span>
+              <h3>Megkeresés</h3>
+              <p>Hívjon, vagy írja le a munkát az űrlapon. Visszahívjuk.</p>
+            </li>
+            <li class="reveal delay-1">
+              <span class="process-step">02</span>
+              <h3>Felmérés</h3>
+              <p>Helyszíni bejárás Debrecenben, a meglévő hálózat átnézése.</p>
+            </li>
+            <li class="reveal delay-2">
+              <span class="process-step">03</span>
+              <h3>Ajánlat</h3>
+              <p>Írásos árajánlat, ütemezéssel — rejtett tételek nélkül.</p>
+            </li>
+            <li class="reveal delay-3">
+              <span class="process-step">04</span>
+              <h3>Kivitelezés</h3>
+              <p>Szerelés, próba, átadás. A kész munkát dokumentáljuk.</p>
+            </li>
+          </ol>
         </div>
       </section>
 
-      <!-- 6. Contact -->
       <section id="kapcsolat" class="section contact" aria-labelledby="kapcsolat-cim">
         <div class="container contact-grid">
           <div class="contact-info reveal">
             <p class="eyebrow">Kapcsolat</p>
             <h2 id="kapcsolat-cim">Kérjen ajánlatot</h2>
             <p>
-              Írja le röviden a munkát. Ez az űrlap <strong>frontend bemutató</strong>:
-              az adatok nem kerülnek elküldésre, csak a böngészőben ellenőrzünk.
+              Hívjon a két szám egyikén, vagy küldjön üzenetet. Az űrlap a
+              VoltPro-nak továbbítja a megadott adatokat.
             </p>
+
+            <div class="phone-cards">
+              <a class="phone-card" href="tel:+36705670878">
+                <span class="phone-card-label">Első szám</span>
+                <span class="phone-card-number">+36 70 567 0878</span>
+                <span class="phone-card-hint">Koppintson a híváshoz</span>
+              </a>
+              <a class="phone-card" href="tel:+36305799361">
+                <span class="phone-card-label">Második szám</span>
+                <span class="phone-card-number">+36 30 579 9361</span>
+                <span class="phone-card-hint">Koppintson a híváshoz</span>
+              </a>
+            </div>
+
             <address>
               <p>
-                <strong>Cím</strong> <span class="sample-tag">minta</span><br />
-                4025 Debrecen, Piac utca 12.
+                <strong>E-mail</strong><br />
+                <a href="mailto:nyitdom@gmail.com">nyitdom@gmail.com</a><br />
+                <a href="mailto:kissnbussiness@gmail.com">kissnbussiness@gmail.com</a>
               </p>
               <p>
-                <strong>Telefon</strong> <span class="sample-tag">minta</span><br />
-                <a href="tel:+36520000000">+36 52 000 0000</a>
-              </p>
-              <p>
-                <strong>E-mail</strong> <span class="sample-tag">minta</span><br />
-                <a href="mailto:info@voltpro.example">info@voltpro.example</a>
-              </p>
-              <p>
-                <strong>Nyitvatartás</strong><br />
-                Hétfő–péntek, 7:30–16:30
+                <strong>Terület</strong><br />
+                Debrecen és környéke
               </p>
             </address>
           </div>
 
           <form class="contact-form reveal delay-1" data-form novalidate>
-            <p class="form-demo-notice" role="note">
-              Demo űrlap — a küldés gomb csak a validációt futtatja, üzenet nem
-              kerül továbbításra.
-            </p>
+            <div class="hp" aria-hidden="true">
+              <label for="website">Weboldal</label>
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+            <input type="hidden" name="form_started" data-form-started value="" />
 
             <div class="field">
-              <label for="nev">Név <span aria-hidden="true">*</span></label>
+              <label for="nev">Teljes név <span aria-hidden="true">*</span></label>
               <input
                 id="nev"
                 name="nev"
@@ -497,13 +466,12 @@
                 <p class="field-error" id="email-error" data-error-for="email" hidden></p>
               </div>
               <div class="field">
-                <label for="telefon">Telefon <span aria-hidden="true">*</span></label>
+                <label for="telefon">Telefon</label>
                 <input
                   id="telefon"
                   name="telefon"
                   type="tel"
                   autocomplete="tel"
-                  required
                   inputmode="tel"
                   placeholder="+36 …"
                   aria-describedby="telefon-error"
@@ -513,18 +481,18 @@
             </div>
 
             <div class="field">
-              <label for="szolgaltatas">Érdeklődés <span aria-hidden="true">*</span></label>
-              <select id="szolgaltatas" name="szolgaltatas" required aria-describedby="szolgaltatas-error">
+              <label for="targy">Tárgy <span aria-hidden="true">*</span></label>
+              <select id="targy" name="targy" required aria-describedby="targy-error">
                 <option value="">Válasszon…</option>
-                <option value="lakossagi">Lakossági villanyszerelés</option>
-                <option value="uzleti">Irodai / üzleti rendszer</option>
-                <option value="okos">Okosotthon</option>
-                <option value="ipari">Ipari kivitelezés</option>
-                <option value="ev">EV töltő</option>
-                <option value="hiba">Hibakeresés / karbantartás</option>
-                <option value="egyeb">Egyéb</option>
+                <option value="Lakossági villanyszerelés">Lakossági villanyszerelés</option>
+                <option value="Irodai / üzleti rendszer">Irodai / üzleti rendszer</option>
+                <option value="Okosotthon">Okosotthon</option>
+                <option value="Ipari kivitelezés">Ipari kivitelezés</option>
+                <option value="EV töltő">EV töltő</option>
+                <option value="Hibakeresés / karbantartás">Hibakeresés / karbantartás</option>
+                <option value="Egyéb">Egyéb</option>
               </select>
-              <p class="field-error" id="szolgaltatas-error" data-error-for="szolgaltatas" hidden></p>
+              <p class="field-error" id="targy-error" data-error-for="targy" hidden></p>
             </div>
 
             <div class="field">
@@ -545,14 +513,17 @@
             <label class="consent">
               <input type="checkbox" name="gdpr" id="gdpr" required aria-describedby="gdpr-error" />
               <span>
-                Megértem, hogy ez egy bemutató űrlap, és az adatok nem kerülnek
-                elküldésre. <span aria-hidden="true">*</span>
+                Hozzájárulok, hogy a megadott adatokat az ajánlatkérés
+                feldolgozásához felhasználják.
+                <span aria-hidden="true">*</span>
               </span>
             </label>
             <p class="field-error" id="gdpr-error" data-error-for="gdpr" hidden></p>
 
             <p class="form-status" data-form-status role="status" aria-live="polite"></p>
-            <button class="btn btn-primary" type="submit">Validáció futtatása</button>
+            <button class="btn btn-primary" type="submit" data-submit>
+              Üzenet küldése
+            </button>
           </form>
         </div>
       </section>
@@ -569,31 +540,37 @@
             </span>
             <span>Volt<strong>Pro</strong></span>
           </a>
-          <p>
-            Fiktív villanyszerelő mintaoldal Debrecenhez. Nem valódi vállalkozás,
-            nem fogad megrendeléseket.
-          </p>
+          <p>Villanyszerelés Debrecenben magánszemélyeknek és vállalkozásoknak.</p>
         </div>
 
         <nav class="footer-nav" aria-label="Lábléc navigáció">
           <a href="#szolgaltatasok">Szolgáltatások</a>
           <a href="#miert-mi">Miért mi</a>
-          <a href="#projektek">Projektek</a>
+          <a href="#munkak">Munkák</a>
           <a href="#kapcsolat">Kapcsolat</a>
         </nav>
 
         <div class="footer-meta">
-          <p class="legal">
-            © <span data-year></span> VoltPro (minta) · Bemutató weboldal
+          <p>
+            <a href="tel:+36705670878">+36 70 567 0878</a><br />
+            <a href="tel:+36305799361">+36 30 579 9361</a>
           </p>
-          <p class="legal">
-            A képek Unsplash forrásból származnak. A vélemények és referenciák
-            kitaláltak.
+          <p>
+            <a href="mailto:nyitdom@gmail.com">nyitdom@gmail.com</a><br />
+            <a href="mailto:kissnbussiness@gmail.com">kissnbussiness@gmail.com</a>
           </p>
+          <p class="legal">© <span data-year></span> VoltPro</p>
         </div>
       </div>
     </footer>
 
+    <nav class="mobile-cta" aria-label="Gyors kapcsolat">
+      <a href="tel:+36705670878">70-es szám</a>
+      <a href="tel:+36305799361">30-as szám</a>
+      <a href="#kapcsolat">Ajánlat</a>
+    </nav>
+
+    <script src="config.js"></script>
     <script src="script.js" defer></script>
   </body>
 </html>
